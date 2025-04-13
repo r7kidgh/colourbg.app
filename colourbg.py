@@ -36,12 +36,11 @@ colours = ["white", "red", "blue", "green", "orange", "pink", "purple", "black"]
 select = StringVar(value="pale green")
 
 def make():
-    global colours
+    global select, colours
     for widget in gui.winfo_children():
         if isinstance(widget, Radiobutton):
             widget.destroy()
     y_pos=230
-    select = StringVar(value="pale green")
     for L in colours:
         Radiobutton(gui,text=L,variable=select,value=L,bg="pale green",command=change_colour).place(x=170,y=y_pos)
         y_pos += 30
@@ -49,7 +48,7 @@ def make():
 def change_colour():
     global select
     selection = select.get()
-    frame1.config(bg=selection)
+    gui.config(bg=selection)
     gui.update()
 make()
 
